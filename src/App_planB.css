@@ -1,0 +1,61 @@
+/* Plan B Styles to append */
+
+.plan-b-header {
+    background: #fff0f0;
+    padding: 15px;
+    border-bottom: 1px solid #ffcccc;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.target-course-info strong {
+    display: block;
+    color: var(--primary-red);
+    font-size: 14px;
+}
+
+.target-course-info span {
+    font-size: 11px;
+    color: #888;
+}
+
+.delete-btn {
+    background: white;
+    border: 1px solid #ffcccc;
+    color: #ff6b6b;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #ff6b6b;
+    color: white;
+}
+
+.plan-b-list-header {
+    padding: 0 15px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666;
+    border-bottom: 1px dashed #eee;
+}
+
+.plan-b-item {
+    border-left: 3px solid #4dabf7;
+    /* Blue for alternatives */
+}
+
+.swap-btn {
+    border-color: #4dabf7;
+    color: #4dabf7;
+}
+
+.swap-btn:hover {
+    background: #e7f5ff;
+    color: #339af0;
+    border-color: #339af0;
+}

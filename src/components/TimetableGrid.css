@@ -1,0 +1,289 @@
+.timetable-container {
+  background: white;
+  border: 1px solid #d6d6d6;
+  border-radius: 0;
+  /* Everytime web is quite squared */
+  position: relative;
+  overflow: hidden;
+}
+
+/* New Grid Layout: [Period Label] [5 Days] [Time Label] */
+.timetable-grid {
+  display: grid;
+  /* Period/Time cols approx 60px, Days equal width */
+  grid-template-columns: 40px repeat(5, 1fr);
+  /* Header (30px) + Time Slots */
+  grid-template-rows: 30px repeat(26, 30px);
+  /* 13 hours (9am-10pm) * 2 slots/hr */
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #d6d6d6;
+  border-left: 1px solid #d6d6d6;
+}
+
+/* Headers */
+.grid-header-corner {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e3e3e3;
+  border-right: 1px solid #e3e3e3;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.grid-header-day {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e3e3e3;
+  border-right: 1px solid #e3e3e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 13px;
+  grid-row: 1;
+}
+
+/* Time/Period Labels */
+.grid-time-label {
+  grid-column: 7;
+  /* Move to far right if we added a column? Or just overlay? */
+  /* Wait, request has Time on Right. 
+       Let's use pseudo-elements or just a right column. */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5px;
+  color: #a0a0a0;
+  font-size: 11px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+/* We will use left column for Periods (1,2,3...) */
+.grid-period-label {
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a0a0a0;
+  font-size: 12px;
+  border-right: 1px solid #e3e3e3;
+  border-bottom: 1px solid #e3e3e3;
+  background: #fcfcfc;
+}
+
+/* Grid Lines */
+.grid-line {
+  border-bottom: 1px solid #e3e3e3;
+  grid-column: 2 / 7;
+  /* Span days */
+  pointer-events: none;
+}
+
+.grid-line-half {
+  border-bottom: 1px dashed #f5f5f5;
+  grid-column: 2 / 7;
+  pointer-events: none;
+}
+
+.grid-day-col {
+  border-right: 1px solid #e3e3e3;
+  grid-row: 2 / -1;
+  pointer-events: none;
+}
+
+/* Course Blocks */
+.course-block {
+  margin: 1px;
+  padding: 8px;
+  /* More padding */
+  font-size: 12px;
+  color: #333;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* Align top */
+  border-radius: 0;
+  /* Squared */
+}
+
+.course-block:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  transform: translateY(-1px);
+}
+
+.course-name {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.course-prof {
+  font-size: 11px;
+  color: #666;
+}
+
+/* Delete Button (X) */
+.delete-btn-x {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  /* Transparent usually */
+  border: none;
+  font-size: 16px;
+  color: #999;
+  cursor: pointer;
+  z-index: 200;
+  /* Ensure high z-index */
+}
+
+.delete-btn-x:hover {
+  color: #ff4d4f;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+/* Vertical Borders for columns */
+/* We can simulate this with a background grid or right-borders on cells */
+
+/* Header Cells */
+.grid-header-corner {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e3e3e3;
+  border-right: 1px solid #e3e3e3;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.grid-header-day {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e3e3e3;
+  border-right: 1px solid #e3e3e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 12px;
+  grid-row: 1;
+}
+
+.grid-header-day:last-child {
+  border-right: none;
+}
+
+/* Time Labels */
+.grid-time-label {
+  grid-column: 1;
+  border-right: 1px solid #e3e3e3;
+  border-bottom: 1px solid #e3e3e3;
+  /* This makes horizontal lines for time col */
+  color: #a0a0a0;
+  font-size: 11px;
+  display: flex;
+  align-items: flex-start;
+  /* Align top */
+  justify-content: flex-end;
+  /* Align right */
+  padding-right: 5px;
+  padding-top: 5px;
+}
+
+/* The actual grid lines inside the schedule */
+/* We'll use the 'grid-line' elements for horizontal lines across the board */
+.grid-line {
+  border-bottom: 1px solid #e3e3e3;
+  /* Hour line */
+  grid-column: 2 / -1;
+  /* Span all days */
+  pointer-events: none;
+}
+
+.grid-line-half {
+  border-bottom: 1px dashed #f0f0f0;
+  /* 30min line (lighter) */
+  grid-column: 2 / -1;
+  pointer-events: none;
+}
+
+/* Vertical separators for days */
+.grid-day-col {
+  border-right: 1px solid #e3e3e3;
+  grid-row: 2 / -1;
+  pointer-events: none;
+}
+
+/* Course Blocks */
+.course-block {
+  margin: 1px;
+  /* Slight gap */
+  padding: 6px;
+  font-size: 11px;
+  color: #444;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+  /* Subtle internal border */
+}
+
+.course-block:hover {
+  filter: brightness(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+.course-name {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+
+.course-prof {
+  font-size: 10px;
+  color: #666;
+  line-height: 1.2;
+}
+
+.delete-btn-x {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+  opacity: 0;
+  /* Hidden by default */
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.course-block:hover .delete-btn-x {
+  opacity: 1;
+  /* Show on hover */
+}
+
+.delete-btn-x:hover {
+  background: #ff4d4f;
+  color: white;
+}

@@ -1,0 +1,209 @@
+/* Merged styles for App.css including Tabs */
+
+:root {
+  font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  --primary-red: #c62917;
+  --bg-gray: #f8f8f8;
+  --border-color: #ddd;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-gray);
+  color: #333;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background: white;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+}
+
+.app-header h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  margin-right: 10px;
+}
+
+.app-header h1 span {
+  color: var(--primary-red);
+}
+
+.app-header p {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+  margin-top: 4px;
+}
+
+/* Layout */
+.main-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.timetable-section {
+  flex: 3;
+}
+
+.controls-section {
+  flex: 2;
+  background: white;
+  border: 1px solid #ddd;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tab Header */
+.tab-header {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.tab-header button {
+  flex: 1;
+  background: #f9f9f9;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #888;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab-header button.active {
+  color: var(--primary-red);
+  border-bottom: 2px solid var(--primary-red);
+  background: white;
+}
+
+.tab-header button:hover:not(.active) {
+  background: #f0f0f0;
+}
+
+/* Course List */
+.course-list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.course-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+  transition: background 0.1s;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-item:hover {
+  background-color: #f9f9f9;
+}
+
+.course-item.conflict {
+  background-color: #fcfcfc;
+  opacity: 0.5;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-info strong {
+  font-size: 13px;
+  color: #333;
+  font-weight: bold;
+}
+
+.course-info span {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.badge {
+  background: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  color: #666;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.add-btn {
+  font-size: 11px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: white;
+  color: #555;
+  border-radius: 3px;
+  /* Square */
+  cursor: pointer;
+}
+
+.add-btn:hover:not(:disabled) {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+  background: #fff0f0;
+}
+
+.add-btn:disabled {
+  color: #ccc;
+  cursor: default;
+  border-color: #eee;
+}
+
+/* Recommendation View */
+.recommend-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.filter-controls {
+  padding: 10px 15px;
+  background: #fcfcfc;
+  border-bottom: 1px solid #eee;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.course-item.recommend-item {
+  border-left: 3px solid var(--primary-red);
+}
+
+.empty-msg {
+  text-align: center;
+  color: #aaa;
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+.hint {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  padding: 10px;
+}
